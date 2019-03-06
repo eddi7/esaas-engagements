@@ -1,9 +1,7 @@
 # ESaaS Engagements Tracker
 
 [![Build Status](https://travis-ci.org/Chenlibo/esaas-engagements.svg?branch=libochen)](https://travis-ci.org/Chenlibo/esaas-engagements)
-<!---[![Code Climate](https://img.shields.io/codeclimate/github/saasbook/esaas-engagements.svg?style=flat-square)](https://codeclimate.com/github/saasbook/esaas-engagements) --->
 [![Maintainability](https://api.codeclimate.com/v1/badges/cae96513afd6ab530342/maintainability)](https://codeclimate.com/github/Chenlibo/esaas-engagements/maintainability)
-<!---[![Test Coverage](https://codeclimate.com/github/saasbook/esaas-engagements/badges/coverage.svg)](https://codeclimate.com/github/saasbook/esaas-engagements/coverage)--->
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cae96513afd6ab530342/test_coverage)](https://codeclimate.com/github/Chenlibo/esaas-engagements/test_coverage)
 
 [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2316824)
