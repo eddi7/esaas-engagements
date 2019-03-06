@@ -170,9 +170,9 @@ bundle exec cucumber
 bundle exec rspec
 ```
 
-To test javascript behaviors, Cucumber uses Selenium Webdriver as default. If you choose Firefox as the testing browser, an extra driver [geckodriver](https://github.com/mozilla/geckodriver/releases) is required. ~~This requires you to have a [geckodriver](https://github.com/mozilla/geckodriver/releases),
-and firefox browser. If you want to use other drivers (e.g. [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)) refer to [Capybara](https://github.com/teamcapybara/capybara) webpage
-to configure default webdriver.~~
+To test javascript behaviors, Cucumber uses Selenium Webdriver as default. This requires you to have a [geckodriver](https://github.com/mozilla/geckodriver/releases),
+and Firefox browser. If you want to use other drivers (e.g. [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)) refer to [Capybara](https://github.com/teamcapybara/capybara) webpage
+to configure default webdriver.
 
 If you do not want to download a new webdriver, you can skip scenarios which require
 webdriver by:
