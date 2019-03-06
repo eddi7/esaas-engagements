@@ -1,15 +1,16 @@
 # ESaaS Engagements Tracker
 
 [![Build Status](https://travis-ci.org/Chenlibo/esaas-engagements.svg?branch=libochen)](https://travis-ci.org/Chenlibo/esaas-engagements)
-[![Code Climate](https://img.shields.io/codeclimate/github/saasbook/esaas-engagements.svg?style=flat-square)](https://codeclimate.com/github/saasbook/esaas-engagements)
-[![Test Coverage](https://codeclimate.com/github/saasbook/esaas-engagements/badges/coverage.svg)](https://codeclimate.com/github/saasbook/esaas-engagements/coverage)
+<!---[![Code Climate](https://img.shields.io/codeclimate/github/saasbook/esaas-engagements.svg?style=flat-square)](https://codeclimate.com/github/saasbook/esaas-engagements) --->
+[![Maintainability](https://api.codeclimate.com/v1/badges/cae96513afd6ab530342/maintainability)](https://codeclimate.com/github/Chenlibo/esaas-engagements/maintainability)
+<!---[![Test Coverage](https://codeclimate.com/github/saasbook/esaas-engagements/badges/coverage.svg)](https://codeclimate.com/github/saasbook/esaas-engagements/coverage)--->
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cae96513afd6ab530342/test_coverage)](https://codeclimate.com/github/Chenlibo/esaas-engagements/test_coverage)
 
-[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2070245)
-[Heroku Deployment](https://shielded-bastion-61752.herokuapp.com/)
-
+[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2316824)
+[Heroku Deployment](https://shielded-sea-54225.herokuapp.com/)
 
 The goal of this currently bare-bones app, thrown together by Armando
-Fox with contributions by [Andrew Halle](https://github.com/andrewhalle), 
+Fox with contributions by [Andrew Halle](https://github.com/andrewhalle),
 is to enable continuous tracking over time of customer apps developed
 by the "ESaaS ecosystem" around [UC Berkeley CS169 Software
 Engineering](https://cs169.saas-class.org).
@@ -152,6 +153,7 @@ After setting environment variables using `figaro`, you can access them by
 Since Heroku wipes out all data when dyno server is down, we used AWS S3 Bucket
 to store the images. After you open an account for AWS, you will need the following
 keys (in `config/application.yml`):
+
 ```yaml
 AWS_ACCESS_KEY_ID: <your_aws_access_key_id>
 AWS_SECRET_ACCESS_KEY: <your_aws_secret_access_key>
@@ -164,6 +166,7 @@ S3_HOST_NAME: <your_s3_host_name>
 
 We used Cucumber/Capybara for integration tests, and RSpec for unit tests. You can
 run tests using:
+
 ```shell
 bundle exec cucumber
 bundle exec rspec
@@ -176,6 +179,7 @@ to configure default webdriver.
 
 If you do not want to download a new webdriver, you can skip scenarios which require
 webdriver by:
+
 ```shell
 bundle exec cucumber --tags ~@javascript
 ```
