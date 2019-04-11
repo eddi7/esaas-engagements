@@ -34,7 +34,7 @@
           = link_to app.name, app
         %td= app.org.name
         %td
-          = app.description
+          = simple_format("<strong>"+app.description.gsub(/\R/, '<br/>').html_safe+"</strong>",  sanitize: true)
           %br
           - app.engagements.each do |engagement|
             %span #{engagement.id} (#{engagement.team_number}): #{engagement.student_names}
