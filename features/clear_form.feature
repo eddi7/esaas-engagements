@@ -41,6 +41,7 @@ Background: Logged in
 Scenario: user can reset a form for New App
 	Given I am on the Apps page
 	When I follow "New App"
+	And show me the page
 	And I fill in "App Name" with "myNewApp"
 	And I fill in "App Description" with "this app is awesome"
 	And I fill in "Deployment Url" with "mynewapp.com"

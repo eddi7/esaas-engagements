@@ -83,7 +83,12 @@ When /^(?:|I )fill in the following:$/ do |fields|
 end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
-  select(value, :from => field)
+  #select(value, :from => field)
+  label_for = find(:xpath, %Q{//label[text()="#{field}"]})[:for]
+  #find("##{label_for}").find(:xpath, "option[text()=\"#{value}\"]").select_option
+  a = find("##{label_for}")
+  a.click
+  a.find(:xpath, "option[text()=\"#{value}\"]").click
 end
 
 When /^(?:|I )check "([^"]*)"$/ do |field|
