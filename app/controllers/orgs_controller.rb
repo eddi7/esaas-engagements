@@ -28,8 +28,8 @@ def mail_all_orgs
   @org_name =  nil
   # if not params['All'].nil?
   #   Org.all.each do |org|
-  #       @org_email = app.org.contact.email
-  #       @org_name = app.org.contact.name
+  #       @org_email = org.contact.email
+  #       @org_name = org.contact.name
   #       FormMailer.mail_to(@org_name, @org_email, @subject, @content, @sender_email).deliver_now
   #   end
   # else
