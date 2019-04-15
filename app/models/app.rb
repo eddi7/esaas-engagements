@@ -10,6 +10,7 @@ class App < ActiveRecord::Base
 
   enum status: [:dead, :development, :in_use, :in_use_and_wants_improvement, :inactive_but_wants_improvement, :pending]
   enum comment_type: [:contact_status, :app_functionality, :general]
+  enum each_page: ['10','50','100','All']  
 
   default_scope { order(:name => :asc) }
   scope :featured, -> { where.not("status = ? or status = ?", App.statuses[:dead], App.statuses[:pending]) }

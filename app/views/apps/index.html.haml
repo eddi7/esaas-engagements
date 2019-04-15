@@ -12,6 +12,20 @@
   :javascript
     $('.filter').change(function() { var klass = $("#apps_table ."+$(this).attr('name')).toggle(); });
 
+= form_tag apps_path, :method => :get do
+  Number per page:
+  - App.each_pages.keys.each do |page|
+    = radio_button_tag "each_page", page, checked = @each_page_str == page
+    = page
+  = submit_tag 'Select'
+    
+= form_tag apps_path, :method => :get do
+  Page number:
+  - (1..@max_page_num).each do |page_num|
+    = radio_button_tag "page_num", page_num, checked = page_num == @page_num
+    = page_num
+  = submit_tag 'Go'
+
 %table.table.table-condensed#apps_table
   %thead
     %tr
@@ -19,6 +33,7 @@
       %th Organization
       %th Description
       %th
+
   %tbody
     - @apps.each do |app|
       %tr{:class => app.status.to_s}
@@ -32,6 +47,22 @@
           - app.engagements.each do |engagement|
             %span #{engagement.id} (#{engagement.team_number}): #{engagement.student_names}
             %br
-        %td{style: 'white-space: nowrap'}
+        %td{style: 'white-space: nowrap'}        
           = link_to 'Edit', edit_app_path(app), :title => "Last update: #{app.updated_at.strftime('%c')}", :class => 'btn btn-primary'
           = link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger'
+
+= form_tag apps_path, :method => :get do
+  Apps on each page:
+  - App.each_pages.keys.each do |page|
+    = radio_button_tag "each_page", page, checked = @each_page_str == page
+    = page
+  = submit_tag 'Select'
+
+= form_tag apps_path, :method => :get do
+  Page number:
+  - (1..@max_page_num).each do |page_num|
+    = radio_button_tag "page_num", page_num, checked = page_num == @page_num
+    = page_num
+  = submit_tag 'Go'
+
+

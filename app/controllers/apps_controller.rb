@@ -7,7 +7,30 @@ class AppsController < ApplicationController
   # GET /apps.json
   def index
     @current_user = User.find_by_id(session[:user_id])
+
+    if !params[:page_num].nil? then
+      session[:page_num] = params[:page_num]
+    elsif session[:page_num].nil? then
+      session[:page_num] = '1'
+    end
+    if !params[:each_page].nil? then
+      session[:each_page] = params[:each_page]
+      session[:page_num] = '1'
+    elsif session[:each_page].nil? then
+      session[:each_page] = '10'
+    end
+
     @apps = App.all
+    @each_page_str = session[:each_page]
+    @page_num = session[:page_num].to_i
+    if @each_page_str == 'All' then
+      @each_page = @apps.length
+    else
+      @each_page = @each_page_str.to_i
+    end
+    @max_page_num =  (@apps.length - 1) / @each_page + 1
+    @apps = @apps.limit(@each_page).offset(@each_page*(@page_num-1))
+    
     respond_to do |format|
       format.json { render :json => @apps.featured }
       format.html
@@ -92,4 +115,4 @@ class AppsController < ApplicationController
     def app_params
       params.require(:app).permit(:name, :description, :deployment_url, :repository_url, :code_climate_url, :org_id, :status, :comments)
     end
-end
+end 
