@@ -13,7 +13,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.0'
   gem 'byebug'
   gem 'simplecov', :require => false
 end
