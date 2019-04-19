@@ -33,6 +33,9 @@ group :test do
   gem 'jasmine-rails'
   gem 'database_cleaner'
   gem 'timecop'
+  gem 'ruby-debug-ide'
+  gem 'debase'
+  gem 'reek'
 end
 
 group :production do
