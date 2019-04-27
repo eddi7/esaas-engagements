@@ -2,34 +2,50 @@ class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
   skip_before_filter :logged_in?, :only => :index
   skip_before_filter :auth_user?, :only => :index
+  @@all_length = App.all.length
 
   # GET /apps
   # GET /apps.json
   def index
     @current_user = User.find_by_id(session[:user_id])
 
-    if !params[:page_num].nil? then
-      session[:page_num] = params[:page_num]
-    elsif session[:page_num].nil? then
-      session[:page_num] = '1'
+    if !params[:page_num].nil? && session[:page_num].nil? then
+      session[:page_num] = 1    
     end
     if !params[:each_page].nil? then
       session[:each_page] = params[:each_page]
-      session[:page_num] = '1'
+      session[:page_num] = 1
     elsif session[:each_page].nil? then
       session[:each_page] = '10'
     end
 
-    @apps = App.all
     @each_page_str = session[:each_page]
     @page_num = session[:page_num].to_i
     if @each_page_str == 'All' then
-      @each_page = @apps.length
+      @each_page = @@all_length
     else
       @each_page = @each_page_str.to_i
     end
-    @max_page_num =  (@apps.length - 1) / @each_page + 1
-    @apps = @apps.limit(@each_page).offset(@each_page*(@page_num-1))
+    max_page_num =  (@@all_length - 1) / @each_page + 1
+    if params[:page_num] == "prv" then
+      if @page_num > 1 then
+	@page_num = @page_num - 1
+	flash[:page_num] = ""
+      else
+	flash[:page_num] = "You are already on the FIRST page."
+      end
+    elsif params[:page_num] == "nxt" then
+      if @page_num < max_page_num then
+	@page_num = @page_num + 1
+	flash[:page_num] = ""
+      else
+	flash[:page_num] = "You are already on the LAST page."
+      end
+    else
+      flash[:page_num] = ""
+    end
+    session[:page_num] = @page_num.to_s
+    @apps = App.limit(@each_page).offset(@each_page*(@page_num-1))
     
     respond_to do |format|
       format.json { render :json => @apps.featured }
